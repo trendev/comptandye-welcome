@@ -1,5 +1,4 @@
 version: '3.7'
-
 services:
    db:
      image: mysql:5.7
@@ -10,7 +9,6 @@ services:
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: ClHP2@Qn9c
-
    wordpress:
      depends_on:
        - db
