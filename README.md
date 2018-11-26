@@ -12,7 +12,7 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 ### Restore the DB from the last WordPress backup
 > **Should be skipped if you want to start from scratch**
 
-> Assuming the last backup is in the file ./db-backup/db_backup_20181126-194420.sql
+> Assuming the last backup is in the file db-backup.sql
 
 #### Connect as MySQL Root
 `docker run -it --link db-wp:mysql --network db_default --rm mysql:5.7 sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8'`
@@ -27,7 +27,7 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 `quit;`
 
 #### Restore the DB
-`cat ./db-backup/db_backup_20181126-194420.sql | docker exec -i db-wp /usr/bin/mysql -u root --password=nfY7.hXRcs wordpress`
+`cat db-backup.sql | docker exec -i db-wp /usr/bin/mysql -u root --password=nfY7.hXRcs wordpress`
 
 ### Stop the MySQL container
 `docker-compose down`
@@ -39,5 +39,5 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 
 `docker-compose up -d`
 
-## 3. Backup the WordPress db
-`` docker run -it --link db-wp:mysql --network welcome_default --rm mysql:5.7 sh -c 'exec mysqldump -hdb-wp -P3306 -uroot -pnfY7.hXRcs wordpress' | tail -n +2 > `date "+db_backup_%Y%m%d-%H%M%S.sql"`  && mv db_backup* db/db-backup/ ``
+## 3. Backup the WordPress DB
+`` docker run -it --link db-wp:mysql --network welcome_default --rm mysql:5.7 sh -c 'exec mysqldump -hdb-wp -P3306 -uroot -pnfY7.hXRcs wordpress' | tail -n +2 > db-backup.sql ``
