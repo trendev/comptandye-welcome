@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+   db-wp:
+     image: mysql:5.7
+     container_name: db-wp
+     volumes:
+      - ./data:/var/lib/mysql
+     environment:
+       MYSQL_ROOT_PASSWORD: nfY7.hXRcs
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: ClHP2@Qn9c

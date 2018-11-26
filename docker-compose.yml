@@ -1,9 +1,10 @@
 version: '3.7'
 services:
-   db:
+   db-wp:
      image: mysql:5.7
+     container_name: db-wp
      volumes:
-      - $HOME/db:/var/lib/mysql
+      - ./db/data:/var/lib/mysql
      environment:
        MYSQL_ROOT_PASSWORD: nfY7.hXRcs
        MYSQL_DATABASE: wordpress
@@ -11,13 +12,13 @@ services:
        MYSQL_PASSWORD: ClHP2@Qn9c
    wordpress:
      depends_on:
-       - db
+       - db-wp
      image: wordpress
+     container_name: wp
      ports:
        - "8000:80"
-       - "8443:443"
      environment:
-       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_HOST: db-wp:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: ClHP2@Qn9c
      volumes:
