@@ -1,5 +1,5 @@
 # welcome
-Welcome Page of comptandye
+Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql)
 
 ## 1. Pre-requisit
 ### Build the MySQL container
