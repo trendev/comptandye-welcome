@@ -15,6 +15,7 @@ services:
      image: wordpress
      ports:
        - "8000:80"
+       - "8443:443"
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
