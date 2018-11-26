@@ -1,25 +1,24 @@
-version: '3.3'
-
+version: '3.7'
 services:
-   dbmysql:
+   db:
      image: mysql:5.7
      volumes:
-       - db_data:/var/lib/mysql
+      - $HOME/db:/var/lib/mysql
      environment:
-       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_ROOT_PASSWORD: nfY7.hXRcs
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
-
+       MYSQL_PASSWORD: ClHP2@Qn9c
    wordpress:
      depends_on:
-       - dbmysql
+       - db
      image: wordpress
      ports:
        - "8000:80"
+       - "8443:443"
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
-volumes:
-    db_data:
+       WORDPRESS_DB_PASSWORD: ClHP2@Qn9c
+     volumes:
+      - ./wp-content:/var/www/html/wp-content
