@@ -6,10 +6,10 @@ services:
      volumes:
       - $HOME/db:/var/lib/mysql
      environment:
-       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_ROOT_PASSWORD: nfY7.hXRcs
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
+       MYSQL_PASSWORD: ClHP2@Qn9c
 
    wordpress:
      depends_on:
@@ -20,6 +20,6 @@ services:
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
+       WORDPRESS_DB_PASSWORD: ClHP2@Qn9c
      volumes:
-      - $HOME/wp-content:/var/www/html/wp-content
+      - ./wp-content:/var/www/html/wp-content
