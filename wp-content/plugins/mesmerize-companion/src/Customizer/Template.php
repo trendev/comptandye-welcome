@@ -174,7 +174,7 @@ class Template
                 
                 $settingContent = get_theme_mod('page_content', array());
                 if ($settingContent && is_string($settingContent) && ! empty($settingContent)) {
-                    $settingContent = json_decode($settingContent, true);
+                    $settingContent = json_decode(urldecode($settingContent), true);
                 }
                 
                 $pageId = get_the_ID();

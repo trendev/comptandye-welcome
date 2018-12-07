@@ -1284,7 +1284,7 @@
 
                     var value = setting.get();
                     if (_.isString(value)) {
-                        value = JSON.parse(value);
+                        value = JSON.parse(decodeURIComponent(value));
                     }
 
                     if (_.isArray(value) && _.isEmpty(value)) {
@@ -1297,7 +1297,7 @@
 
                     value[root.CP_Customizer.preview.data().pageID] = content;
 
-                    setting.set(JSON.stringify(value));
+                    setting.set(encodeURIComponent(JSON.stringify(value)));
                 }
 
                 var modsToSet = {};
@@ -3001,8 +3001,7 @@
                         if (document.queryCommandSupported('insertText')) {
                             document.execCommand('insertHTML', false, text);
                             return false;
-                        }
-                        else { // IE > 7
+                        } else { // IE > 7
                             that.find('*').each(function () {
                                 $(this).addClass('within');
                             });
@@ -3144,8 +3143,7 @@
                         if (document.queryCommandSupported('insertText')) {
                             document.execCommand('insertHTML', false, text);
                             return false;
-                        }
-                        else { // IE > 7
+                        } else { // IE > 7
                             that.find('*').each(function () {
                                 $(this).addClass('within');
                             });
