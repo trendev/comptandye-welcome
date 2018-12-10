@@ -79,6 +79,9 @@ function sydney_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	//Gutenberg align-wide support
+	add_theme_support( 'align-wide' );
 }
 endif; // sydney_setup
 add_action( 'after_setup_theme', 'sydney_setup' );
@@ -408,6 +411,11 @@ require get_template_directory() . '/inc/woocommerce.php';
  * Upsell
  */
 require get_template_directory() . '/inc/upsell/class-customize.php';
+
+/**
+ * Gutenberg
+ */
+require get_template_directory() . '/inc/editor.php';
 
 /**
  * Demo content
