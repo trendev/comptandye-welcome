@@ -485,15 +485,6 @@ function mesmerize_can_show_demo_content()
     return apply_filters("mesmerize_can_show_demo_content", current_user_can('edit_theme_options'));
 }
 
-add_filter('mesmerize_can_show_demo_content', function ($value) {
-    
-    if (mesmerize_is_wporg_preview()) {
-        return true;
-    }
-    
-    return $value;
-});
-
 function mesmerize_get_version()
 {
     $theme = wp_get_theme();
@@ -1175,7 +1166,8 @@ function mesmerize_load_theme_partial($currentTab = null)
 
 function mesmerize_register_theme_page()
 {
-    add_theme_page(__('Mesmerize Info', 'mesmerize'), __('Mesmerize Info', 'mesmerize'), 'activate_plugins', 'mesmerize-welcome', 'mesmerize_load_theme_partial');
+    $page_name = apply_filters('mesmerize_theme_page_name',__('Mesmerize Info', 'mesmerize'));
+    add_theme_page($page_name, $page_name, 'activate_plugins', 'mesmerize-welcome', 'mesmerize_load_theme_partial');
 }
 
 function mesmerize_instantiate_widget($widget, $args = array())

@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	'version'      => '1.6.104',
+	'version'      => '1.6.107',
 	'content_type' => 'free',
 	'themes'       => array(
 		'mesmerize',

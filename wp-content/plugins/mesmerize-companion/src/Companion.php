@@ -487,14 +487,25 @@ class Companion
     {
         $status = $filter_context['status'];
         
-        if ($status == "draft" && isset($data["mesmerize-pro::page_content"])) {
-            $page_id = isset($_POST['customize_post_id']) ? intval($_POST['customize_post_id']) : -1;
-            
+        $pages_content = false;
+        
+        $data_key = "mesmerize-pro::page_content";
+        
+        if (isset($data[$data_key])) {
+            $pages_content = $data[$data_key];
+        } else {
+            if (isset($data["mesmerize::page_content"])) {
+                $data_key      = "mesmerize::page_content";
+                $pages_content = $data[$data_key];;
+            }
+        }
+        
+        if ($status == "draft" && $pages_content) {
+            $page_id       = isset($_POST['customize_post_id']) ? intval($_POST['customize_post_id']) : -1;
             $encode        = false;
-            $pages_content = $data["mesmerize-pro::page_content"];
             $pages_content = $pages_content["value"];
             if (is_string($pages_content)) {
-                $pages_content = json_decode($pages_content, true);
+                $pages_content = json_decode(urldecode($pages_content), true);
                 $encode        = true;
             }
             
@@ -511,12 +522,10 @@ class Companion
                     'post_title'   => $post->post_title,
                 ));
                 
-                //unset($pages_content[$page_id]);
-                
                 if ($encode) {
-                    $data["mesmerize-pro::page_content"]["value"] = json_encode($pages_content);
+                    $data[$data_key]["value"] = json_encode($pages_content);
                 } else {
-                    $data["mesmerize-pro::page_content"]["value"] = $pages_content;
+                    $data[$data_key]["value"] = $pages_content;
                 }
                 
             }
@@ -588,6 +597,7 @@ class Companion
         
         add_filter('user_can_richedit', array($this, 'showRichTextEditor'));
         add_filter('gutenberg_can_edit_post_type', array($this, 'showRichTextEditor'));
+        add_filter('use_block_editor_for_post', array($this, 'showRichTextEditor'));
         add_filter('wp_editor_settings', array($this, 'wpEditorSettings'));
         add_filter('the_editor', array($this, 'maintainablePageEditor'));
     }
@@ -718,6 +728,11 @@ class Companion
         }
         
         return $value;
+    }
+    
+    public function replaceEditor($value = false)
+    {
+        return ! $this->showRichTextEditor($value);
     }
     
     public function canShowDefaultEditor($post_id = false)

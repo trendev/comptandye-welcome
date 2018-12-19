@@ -577,6 +577,11 @@
 
     jQuery(function () {
         if (!window.cpCustomizerGlobal) {
+
+            if(!wp.customize.section('extendthemes_start_from_demo_site')){
+                return;
+            } 
+
             var predefignedSitesSection = wp.customize.section('extendthemes_start_from_demo_site').container;
             predefignedSitesSection.find('*').andSelf().off();
 

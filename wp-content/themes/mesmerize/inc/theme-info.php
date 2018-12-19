@@ -15,10 +15,13 @@ if ( ! isset($tabs[$currentTab])) {
 
 
 <div class="wrap about-wrap full-width-layout mesmerize-page">
-    <h1><?php _e('Thanks for choosing Mesmerize!', 'mesmerize'); ?></h1>
+    <h1><?php echo apply_filters('mesmerize_thankyou_message', __('Thanks for choosing Mesmerize!', 'mesmerize')); ?></h1>
     <p><?php _e('We\'re glad you chose our theme and we hope it will help you create a beautiful site in no time!<br> If you have any suggestions, don\'t hesitate to leave us some feedback.', 'mesmerize'); ?></p>
-
-    <img class="site-badge" src="https://extendthemes.com/mesmerize/wp-content/uploads/2017/11/logo-mesmerize.svg">
+    
+    <?php if ($theme_logo_url = apply_filters('mesmerize_theme_logo_url', 'https://extendthemes.com/mesmerize/wp-content/uploads/2017/11/logo-mesmerize.svg')): ?>
+        <img class="site-badge" src="<?php echo esc_attr($theme_logo_url); ?>">
+    <?php endif; ?>
+    
     <h2 class="nav-tab-wrapper wp-clearfix">
         
         <?php foreach ($tabs as $tabID => $tab): ?>

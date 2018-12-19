@@ -6,7 +6,7 @@
  *
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
- * Version: 1.6.104
+ * Version: 1.6.107
  * Text Domain: mesmerize-companion
  */
 

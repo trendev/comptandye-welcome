@@ -21,7 +21,7 @@ if(!function_exists('mesmerize_get_upgrade_link')){
     
 }
 
-add_filter('mesmerize_can_show_demo_content', "__return_true");
+//add_filter('mesmerize_can_show_demo_content', "__return_true");
 add_filter('mesmerize_show_inactive_plugin_infos', "__return_false");
 
 

@@ -3,11 +3,19 @@
 
 function extendthemes_remote_notifications_handle($data)
 {
-    $url = "http://extendthemes.com/mesmerize/";
+    $url  = "http://extendthemes.com/go/mesmerize-offer/";
+    
+    $args = apply_filters('extendthemes_offer_utm', array(
+        'utm_source' => 'install',
+        'utm_medium' => 'wp',
+    ));
+    
+    $args['coupon'] = $data['coupon_code'];
+    
     if ($data['coupon_code']) {
         $data['buttons']['primary'] = array(
             'text' => 'Get the offer',
-            'url'  => add_query_arg('coupon', $data['coupon_code'], $url),
+            'url'  => add_query_arg($args, $url),
         );
     }
     
