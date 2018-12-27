@@ -27,7 +27,7 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 `quit;`
 
 #### Restore the DB
-`cat db-backup.sql | docker exec -i db-wp /usr/bin/mysql -u root --password=nfY7.hXRcs wordpress`
+`cat ../db-backup.sql | docker exec -i db-wp /usr/bin/mysql -u root --password=nfY7.hXRcs wordpress`
 
 ### Stop the MySQL container
 `docker-compose down`
