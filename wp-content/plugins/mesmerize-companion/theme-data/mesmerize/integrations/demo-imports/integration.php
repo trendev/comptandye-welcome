@@ -107,9 +107,10 @@ function mesmerize_load_demo_theme_partial()
 }
 
 add_action('admin_menu', function () {
+    $title = apply_filters('mesmerize_demos_page_name', __('Mesmerize Demos', 'mesmerize-companion'));
     add_theme_page(
-        __('Mesmerize Demos', 'mesmerize-companion'),
-        __('Mesmerize Demos', 'mesmerize-companion'),
+        $title,
+        $title,
         'activate_plugins',
         'mesmerize-demos',
         'mesmerize_load_demo_theme_partial');

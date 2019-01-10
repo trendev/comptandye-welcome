@@ -130,8 +130,6 @@ class Notification
                 return true;
             } else {
                 $start = \DateTime::createFromFormat('d-m-Y', $this->start);
-                
-                
                 if ($start && $start <= $time) {
                     if ($this->end === "*") {
                         return true;

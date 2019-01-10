@@ -10,7 +10,9 @@ class ContentSetting extends \Mesmerize\Customizer\BaseSetting
     public function update($value)
     {
         
-        $value = urldecode($value);
+        if (is_string($value)) {
+            $value = urldecode($value);
+        }
         
         if (is_string($value)) {
             $pages_content = json_decode($value, true);
@@ -32,7 +34,10 @@ class ContentSetting extends \Mesmerize\Customizer\BaseSetting
     {
         if ($this->is_previewed) {
             $value = $this->post_value(null);
-            $value = urldecode($value);
+            
+            if (is_string($value)) {
+                $value = urldecode($value);
+            }
             
             // json decode for save as draft issue//
             try {
