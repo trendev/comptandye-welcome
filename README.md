@@ -46,5 +46,5 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 
 `docker-compose start wordpress`
 
-## Log in MySQL server
+## Log in MySQL server as root
 `` docker run -it --link db-wp:mysql --network welcome_default --rm mysql:5.7 sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
