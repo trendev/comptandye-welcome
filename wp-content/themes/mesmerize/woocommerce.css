@@ -204,7 +204,7 @@ li.mesmerize-menu-cart a i.fa {
   background-color: #ffffff;
   width: 400px;
   margin-left: -400px;
-  padding: 2.25rem 20px 20px;
+  padding: 2rem 20px;
   box-shadow: rgba(0, 0, 0, 0.33) 0px 0px 5px 2px;
 }
 
@@ -838,6 +838,15 @@ form.woocommerce-ordering {
   font-size: 1.5em;
   margin-right: 0.25em;
   vertical-align: middle;
+}
+
+.woocommerce .widget_price_filter .price_slider_amount .price_label {
+  text-align: left;
+  float: left;
+}
+
+.woocommerce .widget_product_search [type="submit"] {
+  display: none;
 }
 
 .woocommerce input[type=submit] {
@@ -2803,6 +2812,10 @@ form.woocommerce-ordering {
   padding-bottom: 0.75rem;
 }
 
+.woocommerce.single .woocommerce-message p {
+  margin-top: 4px;
+}
+
 .woocommerce .woocommerce-message * {
   display: inline-block !important;
 }
@@ -2821,6 +2834,10 @@ form.woocommerce-ordering {
 .woocommerce tfoot th,
 .woocommerce tfoot td {
   color: #8E9DAE;
+}
+
+.woocommerce .woocommerce-privacy-policy-text {
+  margin-bottom: 1rem;
 }
 
 .woocommerce-checkout .woocommerce-customer-details-card,

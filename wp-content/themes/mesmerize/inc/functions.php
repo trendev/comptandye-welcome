@@ -405,10 +405,13 @@ function mesmerize_suggest_plugins()
     /* tgm-plugin-activation */
     require_once get_template_directory() . '/class-tgm-plugin-activation.php';
     
+    
+    $companion_description = esc_html__('Mesmerize Companion plugin adds drag and drop functionality and many other features to the Mesmerize theme.', 'mesmerize');
+    
     $plugins = array(
         'mesmerize-companion' => array(
             'title'       => esc_html__('Mesmerize Companion', 'mesmerize'),
-            'description' => esc_html__('Mesmerize Companion plugin adds drag and drop functionality and many other features to the Mesmerize theme.', 'mesmerize'),
+            'description' => apply_filters('mesmerize_companion_description', $companion_description),
             'activate'    => array(
                 'label' => esc_html__('Activate', 'mesmerize'),
             ),
@@ -1166,7 +1169,7 @@ function mesmerize_load_theme_partial($currentTab = null)
 
 function mesmerize_register_theme_page()
 {
-    $page_name = apply_filters('mesmerize_theme_page_name',__('Mesmerize Info', 'mesmerize'));
+    $page_name = apply_filters('mesmerize_theme_page_name', __('Mesmerize Info', 'mesmerize'));
     add_theme_page($page_name, $page_name, 'activate_plugins', 'mesmerize-welcome', 'mesmerize_load_theme_partial');
 }
 

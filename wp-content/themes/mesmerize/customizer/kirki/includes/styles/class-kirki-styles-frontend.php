@@ -149,7 +149,9 @@ if ( ! class_exists('Kirki_Styles_Frontend')) {
                             $textDomain   = $templateData->get('TextDomain');
                         }
                         
-                        wp_add_inline_style("$textDomain-style", $styles);
+                        $textDomain = apply_filters('mesmerize_kirki_add_inline_style_handle', "$textDomain-style");
+                        
+                        wp_add_inline_style($textDomain, $styles);
                     }
                 }
                 $this->processed = true;

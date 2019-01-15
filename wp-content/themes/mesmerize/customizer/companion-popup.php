@@ -15,7 +15,11 @@
                 </ul>
             </div>
             <div class="mesmerize_cp_column">
-                <img class="popup-theme-screenshot" src="<?php echo esc_attr(get_template_directory_uri() ."/screenshot.jpg") ?>" />
+                <?php if (apply_filters('mesmerize_companion_show_popup_screenshot', true)): ?>
+                    <img class="popup-theme-screenshot" src="<?php echo esc_attr(get_template_directory_uri() . "/screenshot.jpg") ?>"/>
+                <?php else: ?>
+                    <?php do_action('mesmerize_companion_popup_screenshot'); ?>
+                <?php endif; ?>
             </div>
             <div class="clearfix"></div>
         </div>
