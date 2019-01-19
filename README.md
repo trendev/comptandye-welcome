@@ -1,7 +1,7 @@
 # welcome
 Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql)
 
-## 1. Pre-requisit
+## 1. Pre-requisit : DB initialization
 ### Build the MySQL container
 `cd db/`
 
@@ -29,7 +29,7 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 #### Restore the DB
 `cat ../db-backup.sql | docker exec -i db-wp /usr/bin/mysql -u root --password=nfY7.hXRcs wordpress`
 
-#### Control the "home" / "siteurl" values
+#### ** Control the "home" / "siteurl" values **
 It should be "http://localhost:8000" running on DEV (local) environment and "https://www.comptandye.fr" running on PRODUCTION environment
 
 `` echo 'select option_name,option_value  from wp_options where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
@@ -38,6 +38,8 @@ It should be "http://localhost:8000" running on DEV (local) environment and "htt
 ##### **PROD usage**
 
 `` echo 'update wp_options set option_value="https://www.comptandye.fr" where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
+
+You should also control the Apache load balancing settings...
 
 ##### *DEV/Test usage*
 
@@ -54,11 +56,14 @@ It should be "http://localhost:8000" running on DEV (local) environment and "htt
 `docker-compose up -d`
 
 ## 3. Backup the WordPress DB
+### 3.1. Stop the WordPress running instance
 `docker-compose stop wordpress`
 
+### 3.2. Backup the running setting
 `` docker run -it --link db-wp:mysql --network welcome_default --rm mysql:5.7 sh -c 'exec mysqldump -hdb-wp -P3306 -uroot -pnfY7.hXRcs wordpress' | tail -n +2 > db-backup.sql ``
 
+### 3.3. Restart the WordPress instance
 `docker-compose start wordpress`
 
-## Log in MySQL server as root
+## Admin the Production DB
 `` docker run -it --link db-wp:mysql --network welcome_default --rm mysql:5.7 sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
