@@ -34,7 +34,7 @@ It should be "http://localhost:8000" running on DEV (local) environment and "htt
 
 `` echo 'select option_name,option_value  from wp_options where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
 
-#### Change "home" / "siteurl" values (if required)
+#### Change "home" / "siteurl" values (_if required_)
 ##### **PROD usage**
 
 `` echo 'update wp_options set option_value="https://www.comptandye.fr" where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
