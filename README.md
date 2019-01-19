@@ -30,14 +30,14 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 `cat ../db-backup.sql | docker exec -i db-wp /usr/bin/mysql -u root --password=nfY7.hXRcs wordpress`
 
 #### Control the "home" / "siteurl" values
-It should be "http://localhost:8000" running on DEV environment and "/toto" running on PROD environment
+It should be "http://localhost:8000" running on DEV environment and "https://www.comptandye.fr" running on PROD environment
 
 `` echo 'select option_name,option_value  from wp_options where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
 
 #### Change "home" / "siteurl" values if required
 ##### **PROD usage**
 
-`` echo 'update wp_options set option_value="/toto" where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
+`` echo 'update wp_options set option_value="https://www.comptandye.fr" where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
 
 ##### *DEV/Test usage*
 
