@@ -85,8 +85,8 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 	$_SERVER['HTTPS'] = 'on';
 }
 
-/** SSL */  
-define('FORCE_SSL_ADMIN', true);  
+/** SSL - comment this section when working local and decomment before pushing back to master */  
+/* define('FORCE_SSL_ADMIN', true);  
 if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false)  
     $_SERVER['HTTPS']='on';
 
