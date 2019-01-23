@@ -1,5 +1,7 @@
-# welcome
+# welcome - Deployment Procedure 
 Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql)
+
+Authors : Julien SIE / Thomas TRAN DINH
 
 ## 1. Pre-requisit : DB initialization
 ### Build the MySQL container
