@@ -29,7 +29,7 @@ Welcome Page of comptandye, based on docker images (wordpress/apache/php + mysql
 #### Restore the DB
 `cat ../db-backup.sql | docker exec -i db-wp /usr/bin/mysql -u root --password=nfY7.hXRcs wordpress`
 
-#### ** Control the "home" / "siteurl" values **
+#### ** Control the "home" / "siteurl" values ** :warning:
 It should be "http://localhost:8000" running on DEV (local) environment and "https://www.comptandye.fr" running on PRODUCTION environment
 
 `` echo 'select option_name,option_value  from wp_options where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
@@ -45,13 +45,21 @@ You should also control the Apache load balancing settings...
 
 `` echo 'update wp_options set option_value="http://localhost:8000" where option_name="home" or option_name="siteurl";' | docker exec -i db-wp sh -c 'exec mysql -hdb-wp -P3306 -uroot -pnfY7.hXRcs --default-character-set=utf8 wordpress' ``
 
-### Stop the MySQL container
+### Stop the MySQL container and go back to the main folder
 `docker-compose down`
+
+`cd ..`
 
 *MySQL server is now stopped and the DB is prepared/ready for WordPress*
 
 ## 2. Build the WordPress platform
-`cd ..`
+
+### 2.1 Control the `FORCE_SSL_ADMIN` definition :warning:
+_Comment/Uncomment_ the line, located near line 89, ` define('FORCE_SSL_ADMIN', true);` in `wp-config.php` file _adding/removing_ a hashtag (`'#'`) at the begin of the line.
+
+If the line is uncommented, the WordPress Admin Dashboard will be forced to use secured `https` protocol instead of unsecured `http` protocol, blocking access to `wp-admin` from unsecured request (users accessing `wp-admin` from localhost for exemple).
+
+### 2.2 Build/Start the services 
 
 `docker-compose up -d`
 
