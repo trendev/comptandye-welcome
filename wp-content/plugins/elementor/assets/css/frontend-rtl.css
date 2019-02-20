@@ -1,4 +1,4 @@
-/*! elementor - v2.4.4 - 24-01-2019 */
+/*! elementor - v2.4.6 - 11-02-2019 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -79,7 +79,8 @@
   width: 100%; }
 
 .dialog-prevent-scroll {
-  overflow: hidden; }
+  overflow: hidden;
+  max-height: 100vh; }
 
 @media (max-width: 767px) {
   .dialog-close-button {
@@ -476,25 +477,6 @@
 #wpadminbar #wp-admin-bar-elementor_inspector > .ab-item::before {
   content: "\f348";
   top: 2px; }
-
-.elementor:after {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0; }
-  @media (min-width: 1025px) {
-    .elementor:after {
-      content: 'desktop'; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .elementor:after {
-      content: 'tablet'; } }
-  @media (max-width: 767px) {
-    .elementor:after {
-      content: 'mobile'; } }
 
 .elementor-section {
   position: relative; }
@@ -1346,6 +1328,18 @@ ul.elementor-icon-list-items.elementor-inline-items {
     grid-template-columns: repeat(12, 1fr);
     display: grid; } }
 
+@media (min-width: 1025px) {
+  head:after {
+    content: 'desktop'; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  head:after {
+    content: 'tablet'; } }
+
+@media (max-width: 767px) {
+  head:after {
+    content: 'mobile'; } }
+
 .elementor-form-fields-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1998,6 +1992,9 @@ ul.elementor-icon-list-items.elementor-inline-items {
 
 .elementor-widget-icon-box .elementor-icon-box-description {
   margin: 0; }
+
+.elementor-widget.elementor-icon-list--layout-inline .elementor-widget-container {
+  overflow: hidden; }
 
 .elementor-widget .elementor-icon-list-items.elementor-inline-items {
   margin-right: -8px;

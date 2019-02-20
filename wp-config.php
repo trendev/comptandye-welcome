@@ -79,16 +79,13 @@ $table_prefix  = 'wp_';
  */
 define('WP_DEBUG', false);
 
+/** SSL - comment this section when working local and decomment before pushing back to master */  
+define('FORCE_SSL_ADMIN', true);  
 // If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
 // see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
 	$_SERVER['HTTPS'] = 'on';
 }
-
-/** SSL - comment this section when working local and decomment before pushing back to master */  
-define('FORCE_SSL_ADMIN', true);  
-if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false)  
-    $_SERVER['HTTPS']='on';
 
 /* That's all, stop editing! Happy blogging. */
 

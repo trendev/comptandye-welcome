@@ -72,7 +72,8 @@
   width: 100%; }
 
 .dialog-prevent-scroll {
-  overflow: hidden; }
+  overflow: hidden;
+  max-height: 100vh; }
 
 @media (max-width: 767px) {
   .dialog-close-button {
@@ -404,25 +405,6 @@
 #wpadminbar #wp-admin-bar-elementor_inspector > .ab-item::before {
   content: "\f348";
   top: 2px; }
-
-.elementor:after {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0; }
-  @media (min-width: ELEMENTOR_SCREEN_LG_MIN) {
-    .elementor:after {
-      content: 'desktop'; } }
-  @media (min-width: ELEMENTOR_SCREEN_MD_MIN) and (max-width: ELEMENTOR_SCREEN_MD_MAX) {
-    .elementor:after {
-      content: 'tablet'; } }
-  @media (max-width: ELEMENTOR_SCREEN_SM_MAX) {
-    .elementor:after {
-      content: 'mobile'; } }
 
 .elementor-section {
   position: relative; }
@@ -997,6 +979,18 @@ ul.elementor-icon-list-items.elementor-inline-items {
     grid-template-columns: repeat(12, 1fr);
     display: grid; } }
 
+@media (min-width: ELEMENTOR_SCREEN_LG_MIN) {
+  head:after {
+    content: 'desktop'; } }
+
+@media (min-width: ELEMENTOR_SCREEN_MD_MIN) and (max-width: ELEMENTOR_SCREEN_MD_MAX) {
+  head:after {
+    content: 'tablet'; } }
+
+@media (max-width: ELEMENTOR_SCREEN_SM_MAX) {
+  head:after {
+    content: 'mobile'; } }
+
 .elementor-form-fields-wrapper {
   display: flex;
   flex-wrap: wrap; }
@@ -1522,6 +1516,9 @@ ul.elementor-icon-list-items.elementor-inline-items {
 
 .elementor-widget-icon-box .elementor-icon-box-description {
   margin: 0; }
+
+.elementor-widget.elementor-icon-list--layout-inline .elementor-widget-container {
+  overflow: hidden; }
 
 .elementor-widget .elementor-icon-list-items.elementor-inline-items {
   margin-right: -8px;
