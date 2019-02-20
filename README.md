@@ -57,7 +57,7 @@ You should also control the Apache load balancing settings...
 ## 2. Build the WordPress platform
 
 ### 2.1 Control the `FORCE_SSL_ADMIN` definition :warning:
-_Comment/Uncomment_ the line, located near line 89, ` define('FORCE_SSL_ADMIN', true);` in `wp-config.php` file _adding/removing_ a hashtag (`'#'`) at the begin of the line.
+_Comment/Uncomment_ the line, located near line 83, ` define('FORCE_SSL_ADMIN', true);` in `wp-config.php` file _adding/removing_ a hashtag (`'#'`) at the begin of the line.
 
 If the line is uncommented, the WordPress Admin Dashboard will be forced to use secured `https` protocol instead of unsecured `http` protocol, blocking access to `wp-admin` from unsecured request (users accessing `wp-admin` from localhost for exemple).
 
