@@ -17,6 +17,7 @@ services:
      container_name: wp
      ports:
        - "8000:80"
+    # env settings provided from the wp-config.php
     #  environment:
     #    WORDPRESS_DB_HOST: db-wp:3306
     #    WORDPRESS_DB_USER: wordpress
